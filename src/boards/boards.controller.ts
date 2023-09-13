@@ -5,7 +5,7 @@ import { BoardsService } from './boards.service';
 export class BoardsController {
   constructor(private boardsService: BoardsService) {}
 
-  @Get()
+  @Get('/')
   getAllBoards() {
     return this.boardsService.getAllBoards();
   }
