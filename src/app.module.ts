@@ -7,7 +7,7 @@ import { BoardsService } from './boards/boards.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getTypeOrmConfig } from './configs/typeorm.config';
 import { nestConfig } from './configs/config';
-import { dataSourceOptions } from './configs/db/data-source';
+//import { dataSourceOptions } from './configs/db/data-source';
 
 @Module({
   imports: [

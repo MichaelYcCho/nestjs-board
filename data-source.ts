@@ -1,10 +1,13 @@
 import { ConfigService } from '@nestjs/config';
-import { config } from 'dotenv';
 import { DataSource } from 'typeorm';
+import { config } from 'dotenv';
+import { resolve } from 'path';
 
-config();
+config({ path: resolve(__dirname, '.env.dev') });
 
 const configService = new ConfigService();
+
+console.log('흠', configService.get('DB_PORT'));
 
 export default new DataSource({
   type: 'postgres',
