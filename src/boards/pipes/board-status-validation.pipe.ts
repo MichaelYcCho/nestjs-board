@@ -1,6 +1,6 @@
 import { ArgumentMetadata, PipeTransform } from '@nestjs/common';
 
-export class BoardStausValidationPipe implements PipeTransform {
+export class BoardStatusValidationPipe implements PipeTransform {
   readonly StatusOptions = ['PUBLIC', 'PRIVATE'];
 
   transform(value: any, metadata: ArgumentMetadata) {

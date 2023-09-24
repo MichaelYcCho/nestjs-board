@@ -5,11 +5,14 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
 } from '@nestjs/common';
 
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe';
+import { BoardStatus } from './board-status.enum';
 
 @Controller('boards')
 export class BoardsController {
@@ -29,4 +32,14 @@ export class BoardsController {
   deleteBoard(@Param('id', ParseIntPipe) id: number) {
     return this.boardsService.deleteBoard(id);
   }
+
+  @Patch('/:id/status')
+  updateBoardStatus(
+    @Param('id', ParseIntPipe) id: number,
+    @Body('status', BoardStatusValidationPipe) status: BoardStatus,
+  ) {
+    return this.boardsService.updateBoardStatus(id, status)
+  }
+}
+
 }
