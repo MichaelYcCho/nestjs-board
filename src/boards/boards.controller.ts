@@ -18,8 +18,12 @@ import { BoardStatus } from './board-status.enum';
 export class BoardsController {
   constructor(private boardsService: BoardsService) {}
 
+  async getAllBoards() {
+    return this.boardsService.getAllBoards();
+  }
+
   @Get('/:id')
-  getBoardById(@Param('id', ParseIntPipe) id: number) {
+  async getBoardById(@Param('id', ParseIntPipe) id: number) {
     return this.boardsService.getBoardById(id);
   }
 
@@ -29,17 +33,15 @@ export class BoardsController {
   }
 
   @Delete('/:id')
-  deleteBoard(@Param('id', ParseIntPipe) id: number) {
+  async deleteBoard(@Param('id', ParseIntPipe) id: number) {
     return this.boardsService.deleteBoard(id);
   }
 
   @Patch('/:id/status')
-  updateBoardStatus(
+  async updateBoardStatus(
     @Param('id', ParseIntPipe) id: number,
     @Body('status', BoardStatusValidationPipe) status: BoardStatus,
   ) {
-    return this.boardsService.updateBoardStatus(id, status)
+    return this.boardsService.updateBoardStatus(id, status);
   }
-}
-
 }
