@@ -20,6 +20,6 @@ export class User extends BaseEntity {
   @Column()
   password: string;
 
-  @OneToMany(() => Board, (board) => board.member)
+  @OneToMany(() => Board, (board) => board.user)
   boards: Board[];
 }
