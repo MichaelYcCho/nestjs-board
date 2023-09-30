@@ -16,6 +16,9 @@ import { PassportModule } from '@nestjs/passport';
     }),
   ],
   controllers: [AuthController],
+  // JWT Strategy를 해당 Auth 모듈에서 사용할수 있게 등록
   providers: [AuthService, UsersRepository],
+  // JWT Strategy, PassportModule을 다른 모듈에서 사용할수 있게 등록
+  exports: [PassportModule, JwtModule],
 })
 export class AuthModule {}
