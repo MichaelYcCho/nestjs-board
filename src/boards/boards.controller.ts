@@ -23,6 +23,7 @@ import { GetUser } from 'src/auth/get-user.decorator';
 export class BoardsController {
   constructor(private boardsService: BoardsService) {}
 
+  @Get()
   async getAllBoards() {
     return this.boardsService.getAllBoards();
   }
