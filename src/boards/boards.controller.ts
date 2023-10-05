@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Logger,
   Param,
   ParseIntPipe,
   Patch,
@@ -21,10 +22,12 @@ import { GetUser } from 'src/auth/get-user.decorator';
 @Controller('boards')
 @UseGuards(AuthGuard())
 export class BoardsController {
+  private logger = new Logger('BoardsController');
   constructor(private boardsService: BoardsService) {}
 
   @Get()
-  async getAllBoards() {
+  async getAllBoards(@GetUser() user: User) {
+    this.logger.verbose(`User ${user.username} retrieving all boards`);
     return this.boardsService.getAllBoards();
   }
 
