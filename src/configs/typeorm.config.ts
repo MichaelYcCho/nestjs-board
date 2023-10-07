@@ -10,3 +10,23 @@ export const getTypeOrmConfig = (): TypeOrmModuleOptions => ({
   entities: [__dirname + '/../**/*.entity.{js,ts}'], // 엔티티 위치
   synchronize: true, // DB 스키마 자동 동기화
 });
+
+/*
+
+import { TypeOrmModuleOptions } from '@nestjs/typeorm'
+import * as config from 'config'
+
+const dbConfig = config.get('db')
+export const typeormConfig = (): TypeOrmModuleOptions => ({
+  type: dbConfig.type,
+  host: dbConfig.host,
+  port: dbConfig.port,
+  username: dbConfig.username,
+  password: dbConfig.password,
+  database: dbConfig.database,
+  ...
+})
+
+
+
+*/
